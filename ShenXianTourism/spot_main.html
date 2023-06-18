@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="./CSS/nav.css">
+  <link href="./CSS/spot_main.css" rel="stylesheet" type="text/css" />  
+  <title>景点</title>
+</head>
+
+<body>
+  <nav>  
+    <a href="javascript:void(0);" class="icon">&#9776;</a>
+    <ul class="topNav" id="topNav">
+      <li class="logo"><img src="./img/logo.png"/>屾仙旅游</li>
+      <li class="nav"><a href="index.html">首页</a></li>
+      <li class="nav"><a href="spot_main.html">景点</a></li>
+      <li class="nav"><a href="hotel.html">酒店</a></li>
+      <li class="nav firNav"><a href="comment.html">点评</a>
+        <ul class="secNav">
+          <li><a href="comment.html">攥写点评</a></li>
+          <li href="showPhoto.html">发布照片</li>
+        </ul>
+      </li>
+      <li class="nav perWeb"><a  href="index.html" id="perLink2">个人中心</a></li>
+      <li class="photo"><a href="index.html" id="perLink"><img src="./img/momo.jpg" id="facePhoto"/></a></li>
+    </ul>
+  </nav>
+  <div id="background">
+    <header>
+      <div id="box">
+        <div id="poster">
+          <p>It's a Big World<br /> Out There<span>, Go<br /> Explore</span></p>
+        </div>
+
+        <div id="search">
+
+          <div>
+            <p>Time tracking software used by millions.
+              A simple time</p>
+            <p>and timesheet app th
+              at lets you track work hours</p>
+            <p>across projects......</p>
+          </div>
+          
+          <div>
+            <input type="text" name="spot-search-box" placeholder="请输入查询地点......">
+            <button>Search</button>
+          </div>
+          <div id="airplane_img">
+            <img src="img/airplane.png" style="width: 30px;height: 30px;">
+          </div>
+
+        </div>
+      </div>
+
+      <video src="./video/video1.mp4" id="video1" poster="./img/video2.png"></video>
+
+    </header>
+
+    <main>
+      <h2>主题目的地</h2>
+      <div id="spot-nav">
+        <ul>
+          <li id="one" class="other">古典小镇</li>
+          <li id="two" class="all">雅致园林</li>
+          <li id="three" class="all">绚丽夜色</li>
+          <li id="four" class="all">巍峨高山</li>
+          <li id="five" class="all">多彩文化</li>
+        </ul>
+        <p id="message" style="text-align: center;">古镇深深静不哗，沿街四季卉交加</p>
+        <iframe src="show.html" width="100%" height="550px"></iframe>
+      </div>
+    </main>
+  </div>
+  <footer>
+    <p>Copyright © 333 版权所有</p>
+  </footer>
+</body>
+<script type="text/javascript" src="./JS/spot_main.js"></script>
+<script type="text/javascript" src="./JS/hamburger.js"></script>
+</html>

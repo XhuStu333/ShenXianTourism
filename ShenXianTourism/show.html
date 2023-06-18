@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>多背景图片</title>
+</head>
+
+<style>
+  div{
+    height: 450px;
+    width: 95%;
+    background-image: url(img/古典小镇1.jpg),url(img/古典小镇2.jpg)
+    ,url(img/古典小镇3.jpg),url(img/古典小镇4.jpg);
+    background-repeat: no-repeat;
+    background-size: 50%,50%,50%,60%;
+    border: 10px dashed #333;
+    background-clip: padding-box;
+    background-position:left top,left bottom,right top,right bottom -25%;
+  }
+</style>
+
+<body>
+  <div></div>
+</body>
+
+<script>
+  const div=document.querySelector('div');
+  let port2;
+  let messageCounter=0;
+  window.addEventListener('message',initPort);
+
+  function initPort(e) {
+    port2=e.ports[0];
+    port2.onmessage=onMessage;
+  }
+
+  function onMessage(e) {
+    if(e.data=='1'){
+      div.style.backgroundImage='url(img/古典小镇1.jpg),url(img/古典小镇2.jpg)'+
+      ',url(img/古典小镇3.jpg),url(img/古典小镇4.jpg)'
+      port2.postMessage('古镇深深静不哗，沿街四季卉交加');
+    }
+    else if(e.data=='2'){
+      div.style.backgroundImage='url(img/雅致园林1.jpg),url(img/雅致园林2.jpg)'+
+      ',url(img/雅致园林3.jpg),url(img/雅致园林4.jpg)'
+      port2.postMessage('雨中草色绿堪染,水上桃花红欲燃');
+    }
+    else if(e.data=='3'){
+      div.style.backgroundImage='url(img/绚丽夜色1.jpg),url(img/绚丽夜色2.jpg)'+
+      ',url(img/绚丽夜色3.jpg),url(img/绚丽夜色4.jpg)'
+      port2.postMessage('夜市桥边火，春风寺外船');
+    }
+    else if(e.data=='4'){
+      div.style.backgroundImage='url(img/巍峨高山1.jpg),url(img/巍峨高山2.jpg)'+
+      ',url(img/巍峨高山3.jpg),url(img/巍峨高山4.jpg)'
+      port2.postMessage('飞云渡险脊，走雾隐幽潭');
+    }
+    else if(e.data=='5'){
+      div.style.backgroundImage='url(img/多彩文化1.jpg),url(img/多彩文化2.jpg)'+
+      ',url(img/多彩文化3.jpg),url(img/多彩文化4.jpg)'
+      port2.postMessage('胜日寻芳泗水滨,无边光景一时新');
+    }
+  }
+
+</script>
+</html>

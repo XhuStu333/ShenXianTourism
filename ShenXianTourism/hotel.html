@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+    <title>屾仙旅游</title>
+    <link rel="shortcut icon" href="./img/topicon.jpg">
+    <link rel="stylesheet" type="text/css" href="CSS/hotel_style.css">
+    <link rel="stylesheet" type="text/css" href="./CSS/nav.css">
+</head>
+
+<body>
+    <nav>
+        <a href="javascript:void(0);" class="icon">&#9776;</a>
+        <ul class="topNav" id="topNav">
+            <li class="logo"><img src="./img/topicon.jpg" />屾仙旅游</li>
+            <li class="nav"><a href="index.html">首页</a></li>
+            <li class="nav"><a href="spot_main.html">景点</a></li>
+            <li class="nav"><a href="hotel.html">酒店</a></li>
+            <li class="nav firNav"><a href="comment.html">点评</a>
+                <ul class="secNav">
+                    <li><a href="comment.html">攥写点评</a></li>
+                    <li><a href="showPhoto.html">发布照片</a></li>
+                </ul>
+            </li>
+            <li class="nav perWeb"><a href="login.html" id="perLink2">个人中心</a></li>
+            <li class="photo"><a href="login.html" id="perLink2"><img src="./img/momo.jpg" /></a></li>
+        </ul>
+    </nav>
+    <div id="container">
+        <div id="top_div">
+            <h2>订酒店</h2><br>
+            <div>
+                <div><input type="text" name="destination" id="destination" placeholder="出行目的地"></div>
+                <div><input type="date" name="in_time" id="in_time" placeholder="入住日期"></div>
+                <div><input type="date" name="out_time" id="out_time" placeholder="离开日期"></div>
+                <div><input type="number" name="p_num" id="p_num" placeholder="人数"></div>
+                <div><input type="submit" name="confirm" id="confirm" value="√"></div>
+            </div>
+            <div>当前系统时间为：<span id="time"></span></div>
+        </div>
+        <div id="center_div">
+            <div id="left_div">
+                <div>
+                    <h2>价格</h2>
+                    <span id="price1">￥价格</span>-<span id="price2">￥价格</span><br>
+                    <input type="range" id="price" min="0" max="2000" step="100" onchange="f()">
+                    <hr>
+                </div>
+                <div>
+                    <h2>酒店类型</h2>
+                    <ul>
+                        <li><input type="radio" name="hotel_type" value="酒店" onclick="check()">酒店</li>
+                        <li><input type="radio" name="hotel_type" value="民宿客栈" onclick="check()">民宿&客栈</li>
+                        <li><input type="radio" name="hotel_type" value="特色住宿" onclick="check()">特色住宿</li>
+                        <li><input type="radio" name="hotel_type" value="简易旅馆" onclick="check()">简易旅馆</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="right_div" id="rdiv1">
+                <div class="hotel_desc" id="div1">
+                    <div class="hotel_img">
+                        <img src="img/1.png">
+                    </div>
+                    <div class="hotel_text">
+                        <h2>酒店</h2>
+                        <div>
+                            <img src="img/45.png">
+                            <span>快速入住/退房</span><br>
+                            <img src="img/47.png">
+                            <span>家庭套房</span><br>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hotel_desc" id="div2">
+                    <div class="hotel_img">
+                        <img src="img/1.png">
+                    </div>
+                    <div class="hotel_text">
+                        <h2>酒店</h2>
+                        <div>
+                            <img src="img/45.png">
+                            <span>快速入住/退房</span><br>
+                            <img src="img/47.png">
+                            <span>家庭套房</span><br>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hotel_desc" id="div3">
+                    <div class="hotel_img">
+                        <img src="img/1.png">
+                    </div>
+                    <div class="hotel_text">
+                        <h2>酒店</h2>
+                        <div>
+                            <img src="img/45.png">
+                            <span>快速入住/退房</span><br>
+                            <img src="img/47.png">
+                            <span>家庭套房</span><br>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hotel_desc" id="div4">
+                    <div class="hotel_img">
+                        <img src="img/1.png">
+                    </div>
+                    <div class="hotel_text">
+                        <h2>酒店</h2>
+                        <div>
+                            <img src="img/45.png">
+                            <span>快速入住/退房</span><br>
+                            <img src="img/47.png">
+                            <span>家庭套房</span><br>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right_div" id="rdiv2">
+                <div class="hotel_desc" id="div1">
+                    <div class="hotel_img">
+                        <img src="img/1.png">
+                    </div>
+                    <div class="hotel_text">
+                        <h2>民宿客栈</h2>
+                        <div>
+                            <img src="img/45.png">
+                            <span>快速入住/退房</span><br>
+                            <img src="img/47.png">
+                            <span>家庭套房</span><br>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hotel_desc" id="div2">
+                    <div class="hotel_img">
+                        <img src="img/1.png">
+                    </div>
+                    <div class="hotel_text">
+                        <h2>民宿客栈</h2>
+                        <div>
+                            <img src="img/45.png">
+                            <span>快速入住/退房</span><br>
+                            <img src="img/47.png">
+                            <span>家庭套房</span><br>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hotel_desc" id="div3">
+                    <div class="hotel_img">
+                        <img src="img/1.png">
+                    </div>
+                    <div class="hotel_text">
+                        <h2>民宿客栈</h2>
+                        <div>
+                            <img src="img/45.png">
+                            <span>快速入住/退房</span><br>
+                            <img src="img/47.png">
+                            <span>家庭套房</span><br>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hotel_desc" id="div4">
+                    <div class="hotel_img">
+                        <img src="img/1.png">
+                    </div>
+                    <div class="hotel_text">
+                        <h2>民宿客栈</h2>
+                        <div>
+                            <img src="img/45.png">
+                            <span>快速入住/退房</span><br>
+                            <img src="img/47.png">
+                            <span>家庭套房</span><br>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right_div" id="rdiv3">
+                <div class="hotel_desc" id="div1">
+                    <div class="hotel_img">
+                        <img src="img/1.png">
+                    </div>
+                    <div class="hotel_text">
+                        <h2>特色住宿</h2>
+                        <div>
+                            <img src="img/45.png">
+                            <span>快速入住/退房</span><br>
+                            <img src="img/47.png">
+                            <span>家庭套房</span><br>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hotel_desc" id="div2">
+                    <div class="hotel_img">
+                        <img src="img/1.png">
+                    </div>
+                    <div class="hotel_text">
+                        <h2>特色住宿</h2>
+                        <div>
+                            <img src="img/45.png">
+                            <span>快速入住/退房</span><br>
+                            <img src="img/47.png">
+                            <span>家庭套房</span><br>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hotel_desc" id="div3">
+                    <div class="hotel_img">
+                        <img src="img/1.png">
+                    </div>
+                    <div class="hotel_text">
+                        <h2>特色住宿</h2>
+                        <div>
+                            <img src="img/45.png">
+                            <span>快速入住/退房</span><br>
+                            <img src="img/47.png">
+                            <span>家庭套房</span><br>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hotel_desc" id="div4">
+                    <div class="hotel_img">
+                        <img src="img/1.png">
+                    </div>
+                    <div class="hotel_text">
+                        <h2>特色住宿</h2>
+                        <div>
+                            <img src="img/45.png">
+                            <span>快速入住/退房</span><br>
+                            <img src="img/47.png">
+                            <span>家庭套房</span><br>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right_div" id="rdiv4">
+                <div class="hotel_desc" id="div1">
+                    <div class="hotel_img">
+                        <img src="img/1.png">
+                    </div>
+                    <div class="hotel_text">
+                        <h2>简易旅馆</h2>
+                        <div>
+                            <img src="img/45.png">
+                            <span>快速入住/退房</span><br>
+                            <img src="img/47.png">
+                            <span>家庭套房</span><br>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hotel_desc" id="div2">
+                    <div class="hotel_img">
+                        <img src="img/1.png">
+                    </div>
+                    <div class="hotel_text">
+                        <h2>简易旅馆</h2>
+                        <div>
+                            <img src="img/45.png">
+                            <span>快速入住/退房</span><br>
+                            <img src="img/47.png">
+                            <span>家庭套房</span><br>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hotel_desc" id="div3">
+                    <div class="hotel_img">
+                        <img src="img/1.png">
+                    </div>
+                    <div class="hotel_text">
+                        <h2>简易旅馆</h2>
+                        <div>
+                            <img src="img/45.png">
+                            <span>快速入住/退房</span><br>
+                            <img src="img/47.png">
+                            <span>家庭套房</span><br>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hotel_desc" id="div4">
+                    <div class="hotel_img">
+                        <img src="img/1.png">
+                    </div>
+                    <div class="hotel_text">
+                        <h2>简易旅馆</h2>
+                        <div>
+                            <img src="img/45.png">
+                            <span>快速入住/退房</span><br>
+                            <img src="img/47.png">
+                            <span>家庭套房</span><br>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Copyright © 333 版权所有</p>
+    </footer>
+    <script>
+
+        function f() {
+            var price = document.getElementById("price").value;
+            document.getElementById("price2").innerHTML = "￥" + price;
+            document.getElementById("price1").innerHTML = "￥0";
+        }
+        function getCurrentTime() {
+            var date = new Date();
+            var timeInfo = date.getFullYear() + "年" + (date.getMonth() + 1) + "月" + date.getDate() + "日 " +
+                date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+
+            var time = document.getElementById("time");
+            time.innerHTML = timeInfo.fontcolor("green");
+        }
+
+        getCurrentTime();
+        //定时方法.
+        window.setInterval("getCurrentTime()", 1000);
+
+
+        function check() {
+            var hotel_type = document.getElementsByName("hotel_type");
+            var rdiv1 = document.getElementById("rdiv1");
+            var rdiv2 = document.getElementById("rdiv2");
+            var rdiv3 = document.getElementById("rdiv3");
+            var rdiv4 = document.getElementById("rdiv4");
+            if (hotel_type[0].checked) {
+                rdiv1.style.display = "block";
+                rdiv2.style.display = "none";
+                rdiv3.style.display = "none";
+                rdiv4.style.display = "none";
+            }
+            if (hotel_type[1].checked) {
+                rdiv2.style.display = "block";
+                rdiv1.style.display = "none";
+                rdiv3.style.display = "none";
+                rdiv4.style.display = "none";
+            }
+            if (hotel_type[2].checked) {
+                rdiv3.style.display = "block";
+                rdiv1.style.display = "none";
+                rdiv2.style.display = "none";
+                rdiv4.style.display = "none";
+            }
+            if (hotel_type[3].checked) {
+                rdiv4.style.display = "block";
+                rdiv1.style.display = "none";
+                rdiv3.style.display = "none";
+                rdiv2.style.display = "none";
+            }
+        }
+        check();
+
+    </script>
+    <script type="text/javascript" src="./JS/hamburger.js"></script>
+</body>
+
+</html>

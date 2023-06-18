@@ -1,0 +1,409 @@
+* {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+a {
+  text-decoration: none;
+}
+
+/* header部分 */
+/* 导航栏nav */
+.icon {
+  display: none;
+  position: absolute;
+  margin-left: 50px;
+  font-size: 65px;
+  color: #7ca982;
+}
+
+/* 自适应 */
+/*@media screen and (max-width: 900px) {
+  nav ul{margin: 0;}
+  .topNav .nav,.photo{display: none;}
+  .topNav li:first-child{margin: 0 auto;}
+  .icon {
+    display: block;         
+  }
+}
+@media screen and (max-width: 900px) {
+  ul.responsive{flex-direction: column;padding: 0;}
+  ul.responsive li{transition: all 0.3s ease;}
+  ul.responsive .nav{
+    display: block;
+    background-color:#76db83;
+    position: relative; 
+    top:35px;
+    left: -25%;
+    width: 50%;
+    padding: 40px 0;
+    font-size: 35px;
+  }
+  ul.responsive li.logo{position: relative; top: 17px;}
+  ul.responsive .icon {
+    position: absolute;      
+  }
+  ul.responsive .perWeb{
+    border-radius: 0 0 20px 20px;
+  }
+  ul.responsive .nav:hover{
+    font-family: 'Spectral SC';
+    padding: 40px 0;
+    border-bottom:none;
+    background-color: #7CA982;
+    font-size: 35px;
+    transition: all 0.5s ease;
+  }
+  ul.responsive .secNav{
+    position: relative;
+    top:40px;
+    left: 0;
+    width: 100%;
+    height: 112px;
+    box-shadow: none;
+  }
+  ul.responsive .secNav li{
+    padding: 18px 0;
+  } */
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 99999;
+  background-color: #ffffff;
+  box-shadow: 0px 5px 5px rgba(73, 71, 71, 0.1);
+  width: 100%;
+}
+nav ul {
+  box-sizing: border-box;
+  width: 100%;
+  height: 89px;
+  padding: 0 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+/*网站图标*/
+nav img:first-of-type {
+  width: 42px;
+  height: 42px;
+}
+nav img:last-of-type {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+nav ul .logo {
+  color: #7ca982;
+  font-family: "FZYaoTi";
+  font-size: 42px;
+  line-height: 42px;
+}
+/* nav一般字体 */
+nav li {
+  font-family: "SimSun";
+  font-size: 20px;
+  line-height: 20px;
+  list-style: none;
+  transition: all 0.3s ease;
+}
+nav li :not(:first-of-type) {
+  flex-shrink: 2;
+  border: 0;
+}
+.nav {
+  width: 65px;
+}
+.perWeb {
+  display: none;
+}
+nav ul li a {
+  text-decoration: none;
+  color: #4a4a4a;
+}
+/* 触摸导航栏后 */
+.nav:hover {
+  font-family: "Spectral SC";
+  font-size: 30px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0 0 20px 0;
+  border-bottom: 5px solid #7ca982;
+}
+.firNav {
+  position: relative;
+}
+.secNav {
+  padding: 0;
+  display: none;
+  position: absolute;
+  width: 140px;
+  height: 80px;
+  top: 40px;
+  left: -35px;
+  background-color: #ffffff;
+  font-size: 10px;
+  text-align: center;
+  box-shadow: 0px 3px 9px #888888;
+}
+.firNav:hover .secNav {
+  display: block;
+  z-index: 999;
+}
+
+.secNav li {
+  padding: 10px 0;
+}
+.secNav li:hover {
+  background-color: rgba(131, 124, 124, 0.2);
+}
+
+/* 轮播图 */
+header {
+  height: 650px;
+  width: 100%;
+  background: url("../img/背景.png");
+  background-size: 100% 100%;
+  z-index: -1;
+}
+.map {
+  height: 410px;
+  width: 707px;
+  position: relative;
+  top: -170px;
+  left: 50%;
+  transform: translate(-50%, 50%); /*居中 */
+}
+.map a {
+  text-decoration: none;
+}
+.map li {
+  list-style-type: none;
+}
+.map img {
+  width: 707px;
+  height: 410px;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
+.imgs {
+  width: 707px;
+  height: 410px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+.imgs li {
+  position: absolute;
+  width: 707px;
+  transition: 1s ease;
+}
+/* 左右按钮 */
+.map .arrow {
+  position: absolute;
+  font-size: 24px;
+  color: white;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  background-color: rgb(53, 34, 34);
+  border-radius: 18px;
+  opacity: 0.3;
+  z-index: 999;
+  top: 45%;
+}
+.map .left {
+  left: -200px;
+}
+.map .right {
+  right: -200px;
+}
+.left:hover,
+.right:hover {
+  opacity: 0.8;
+}
+.imgs .one {
+  transform: translateX(-260px) scale(0.9);
+  z-index: 1;
+}
+.imgs .two {
+  z-index: 2;
+}
+.imgs .three {
+  transform: translateX(260px) scale(0.9);
+  z-index: 1;
+}
+/* 刚开始不显示的图片就放在中间图片的下面 */
+.imgs .four {
+  transform: scale(0.9);
+  z-index: -1;
+}
+.imgs .five {
+  transform: scale(0.9);
+  z-index: -1;
+}
+.imgs .six {
+  transform: scale(0.9);
+  z-index: -1;
+}
+/* 小圆圈 */
+.list {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  margin-left: -105px;
+  z-index: 333;
+}
+.list li {
+  float: left;
+  width: 20px;
+  height: 20px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  margin: 0 10px;
+  cursor: pointer;
+}
+.list .change {
+  background-color: #7ca982;
+}
+/* 左右两边各一个盒子,实现点击图片翻页 */
+.lrbox {
+  position: absolute;
+  height: 331px;
+  width: 180px;
+  cursor: pointer;
+}
+.rights {
+  right: -185px;
+  bottom: 35px;
+}
+.lefts {
+  left: -185px;
+  bottom: 35px;
+}
+
+/*main部分 */
+main {
+  text-align: center;
+}
+h2 {
+  line-height: 80px;
+  font-size: 30px;
+  font-family: "Signika SC";
+  color: #14183e;
+}
+
+/* 我们的服务 */
+main section:first-of-type {
+  width: 100%;
+  height: 478px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}
+/* 每个div小盒子 */
+.service {
+  width: 240px;
+  height: 260px;
+  border-radius: 32.49px;
+  margin: 20px auto;
+  padding-top: 80px;
+}
+.service:hover {
+  box-shadow: 0px 0px 8px #888888;
+}
+.service:nth-of-type(2) {
+  padding-top: 15px;
+  height: 325px;
+  background-color: white;
+  box-shadow: 1px 1px 3px #888888;
+}
+.service:nth-of-type(2) img:last-child {
+  position: relative;
+  top: 10px;
+  left: -105px;
+  z-index: -1;
+}
+/* 字体 */
+.service figcaption:first-of-type {
+  font-family: "Open Sans";
+  color: #1e1d4c;
+  font-size: 18px;
+  line-height: 40px;
+  margin: 0;
+}
+.service figcaption {
+  font-weight: "Poppins";
+  color: #5e6282;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0 30px;
+}
+
+/* 景点趋势 */
+section:nth-of-type(2) {
+  width: 746px;
+  height: 578px;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+/* 最新资讯 */
+section:last-of-type {
+  width: 100%;
+  height: 588px;
+  margin-bottom: 50px;
+}
+table {
+  width: 846px;
+  margin: 0 auto;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 30px;
+  overflow: hidden;
+  line-height: 28px;
+}
+table a {
+  color: #575757;
+  font-size: 15px;
+}
+tr {
+  height: 100px;
+  font-size: 20px;
+  font-size: "SimSun";
+}
+tr:nth-child(2n + 1) {
+  background-color: #f6f6f6;
+}
+tr:nth-child(2n) {
+  background-color: #eff2e8;
+}
+td:nth-child(2n + 1) {
+  width: 580px;
+  padding: 0 0 0 50px;
+  text-align: left;
+}
+td:nth-child(2n) {
+  width: 300px;
+  font-size: 18px;
+}
+
+/* footer部分 */
+footer p {
+  width: 100%;
+  background-color: #7ca982;
+  font-family: "SimSun";
+  font-style: normal;
+  color: #ffffff;
+  font-size: 28px;
+  text-align: center;
+  padding: 31px 0;
+}

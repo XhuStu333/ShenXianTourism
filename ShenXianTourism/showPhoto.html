@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./img/topicon.jpg">
+  <link href="CSS/nav.css" rel="stylesheet" type="text/css">
+  <title>发布照片</title>
+  <style>
+    form {
+      /* display: inline-block; */
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    #up {
+      margin-left: 3%;
+    }
+
+    .up {
+      width: 180px;
+      height: 50px;
+      font-size: 18px;
+      background-color: rgba(136, 193, 95, 0.899);
+    }
+
+    .up:hover {
+      background-color: darkgrey;
+    }
+
+    .up:active {
+      font-weight: 600;
+      font-size: 20px;
+    }
+
+    div {
+      display: inline-block;
+      width: 400px;
+      height: 500px;
+      border: 8px solid #ddd;
+      margin: 30px;
+      border-radius: 8%;
+    }
+
+    div img {
+      width: 100%;
+      height: 100%;
+      border-radius: 6%;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="javascript:void(0);" class="icon">&#9776;</a>
+    <ul class="topNav" id="topNav">
+      <li class="logo"><img src="./img/topicon.jpg" />屾仙旅游</li>
+      <li class="nav"><a href="index.html">首页</a></li>
+      <li class="nav"><a href="spot_main.html">景点</a></li>
+      <li class="nav"><a href="hotel.html">酒店</a></li>
+      <li class="nav firNav"><a href="comment.html">点评</a>
+        <ul class="secNav">
+          <li><a href="comment.html">攥写点评</a></li>
+          <li><a href="showPhoto.html">发布照片</a></li>
+        </ul>
+      </li>
+      <li class="nav perWeb"><a href="login.html" id="perLink2">个人中心</a></li>
+      <li class="photo"><a href="login.html" id="perLink"><img src="./img/momo.jpg" id="facePhoto" /></a></li>
+    </ul>
+  </nav>
+  <main>
+    <form name="form" action="" method="post">
+      <input type="file" name="upPhotos" id="upPhotos" style="display:none;"
+        onchange="document.form.path.value=this.value" multiple="multiple" accept="image/*" />
+      <input name="path" readonly>
+      <input type="button" value="选择照片" onclick="document.form.upPhotos.click()" class="up">
+      <div></div>
+      <input type="button" value="确认上传" class="up" id="up">
+    </form>
+
+  </main>
+  <script>
+    var div = document.getElementsByTagName("div")[0];
+    var myStorage = window.localStorage;
+    var num = 0;
+    var up = document.getElementById("up");
+    var base64;
+    var uid = sessionStorage.getItem("uid");
+
+    if (uid) {
+      document.querySelector('#upPhotos').onchange = function () {
+        if (this.files.length) {
+          let file = this.files[0];
+          console.log(file);
+          let reader = new FileReader();
+          //新建 FileReader 对象
+          reader.onload = function () {
+            blobs = new Blob([file], { type: "image/png" });		//转blob		
+            console.log(blobs);
+            let blob = URL.createObjectURL(blobs);
+            console.log(blob);
+            var img = document.createElement("img");
+            img.src = blob;
+            div.appendChild(img);
+            base64 = this.result;
+            up.onclick = function () {
+              store(base64);
+              num += 1;
+              div.removeChild(img);
+            }
+          };
+          reader.readAsDataURL(file);
+        }
+      }
+
+    } else {
+      alert("请先登录再上传图片");
+      window.location.href = 'login.html';
+    }
+
+    function store(s) {
+      if (num == 8) {
+        alert("已达本次上传上限，可开通vip解锁更多");
+        window.location.href = 'personalWeb.html';
+      } else {
+        myStorage.setItem("photo" + uid + "_" + num, s);
+      }
+
+    }
+  </script>
+  <script type="text/javascript" src="./JS/hamburger.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			<video id="media" autoplay></video>
+			<button id="capture">点击拍照</button>
+		</div>
+		<img style="width: 400px;height: 400px;" id="m1"/>
+		<button id="b1">显示</button>
+		<canvas id="canvas" width="480" height="320"></canvas>
+		<button id="sendhead">上传头像</button><br />
+		<img id="img01">
+		<script type="text/javascript">
+			let media = document.getElementById('media'); // video元素
+			let capture = document.getElementById('capture'); // button元素  
+			let canvas = document.getElementById('canvas'); // canvas元素
+			let sendhead = document.getElementById('sendhead');
+			let context = canvas.getContext('2d');
+			navigator.mediaDevices.getUserMedia({
+				video: {
+					width: 480,
+					height: 320
+				},
+				audio: true
+			}).then(stream => {
+				// 将视频流设置为video元素的源
+				media.srcObject = stream
+				media.play()
+			})
+			// 绑定拍照按钮的单机事件
+			let blob;
+			capture.addEventListener('click', () => {
+				context.drawImage(media, 0, 0); // 将video在canvas上绘制出来
+				//保存到内置数据库
+				function dataURLToBlob(fileDataURL) {
+				let arr = fileDataURL.split(','),
+					mime = arr[0].match(/:(.*?);/)[1],
+					bstr = atob(arr[1]),
+					n = bstr.length,
+					u8arr = new Uint8Array(n);
+				while (n--) {
+					u8arr[n] = bstr.charCodeAt(n);
+				}
+				return new Blob([u8arr], {
+					type: mime
+				});
+			}
+			var dataurl;
+			dataurl = canvas.toDataURL('image/png');
+			blob = dataURLToBlob(dataurl);
+			const objectURL = URL.createObjectURL(res.data);
+			console.log(blob);
+			});
+			document.getElementById('b1').onclick=function(){
+				var reader = new FileReader();
+			    reader.onload = function() {
+				// 当 FileReader 读取文件时候，读取的结果会放在 FileReader.result 属性中
+				document.getElementById('m1').src = this.result;
+			   };
+			    reader.readAsDataURL(blob);
+			}
+			
+			
+			sendhead.onclick = function() {
+				var idb;
+				var dbName = "imgDB";
+				window.indexedDB.deleteDatabase(dbName)
+				var request = window.indexedDB.open(dbName);
+				request.onupgradeneeded = function(e) {
+					idb =request.result;
+					if (idb.objectStoreNames.contains("img1")) 
+						idb.deleteObjectStore("img1");
+				   var store=idb.createObjectStore("img1",{keyPath:"file1"});
+				   store.createIndex("imgfile","imgfile",{unique:false});
+				}
+				request.onsuccess = function(e) {
+					console.log(blob);
+					 console.log("success");
+					 idb = e.target.result;
+					idb.transaction( ['img1'] ,'readwrite' ).objectStore('img1').add({file1:"1",imgfile:blob});
+					console.log('添加了一条数据'); 
+				}
+				request.onerror = function(e) {
+				    console.log("error");
+				}
+			}
+		</script>
+	</body>
+</html>

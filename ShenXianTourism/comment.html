@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+	<title></title>
+	<link rel="shortcut icon" href="./img/topicon.jpg">
+	<link rel="stylesheet" type="text/css" href="./CSS/nav.css">
+	<style>
+		body {
+			margin: 0 auto;
+			font-family: '宋体';
+			background-color: rgb(253, 255, 226);
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+
+		#mat td {
+			padding-top: 12px;
+		}
+
+		#mat img {
+			width: 300px;
+			height: 200px;
+		}
+
+		#mat {
+			display: flex;
+			justify-content: center;
+			column-gap: 16px;
+			margin-top: 24px;
+		}
+
+		#mat table tr td :nth-child(6) {
+			position: relative;
+			top: 8px;
+			font-weight: bold;
+		}
+
+		#mat table {
+			height: 450px;
+			width: 650px;
+			margin: 0;
+		}
+
+		#mat h1 {
+			margin: 0;
+			color: rgb(85, 170, 127);
+			font-weight: bold;
+		}
+
+		#mat p {
+			font-weight: bold;
+		}
+
+		#mat table tr th {
+			text-align: left;
+		}
+
+		#mat table tr td div {
+			background-image: url("img/点评1.png");
+			height: 25px;
+			width: 28px;
+			float: left;
+			background-size: cover;
+			margin-right: 3px;
+
+		}
+
+		#head {
+			width: 290px;
+			border: 2px solid lightgray;
+		}
+
+		#mat textarea {
+			border: 2px solid lightgray;
+		}
+
+		#myCanvas {
+			position: absolute;
+			top: 200px;
+			right: 100px;
+
+		}
+	</style>
+</head>
+
+<body>
+	<nav>
+		<a href="javascript:void(0);" class="icon">&#9776;</a>
+		<ul class="topNav" id="topNav">
+			<li class="logo"><img src="./img/topicon.jpg" />屾仙旅游</li>
+			<li class="nav"><a href="index.html">首页</a></li>
+			<li class="nav"><a href="spot_main.html">景点</a></li>
+			<li class="nav"><a href="hotel.html">酒店</a></li>
+			<li class="nav firNav"><a href="comment.html">点评</a>
+				<ul class="secNav">
+					<li><a href="comment.html">攥写点评</a></li>
+					<li><a href="showPhoto.html">发布照片</a></li>
+				</ul>
+			</li>
+			<li class="nav perWeb"><a href="login.html" id="perLink2">个人中心</a></li>
+			<li class="photo"><a href="login.html" id="perLink"><img src="./img/momo.jpg" id="facePhoto"/></a></li>
+		</ul>
+	</nav>
+	<div id="mat">
+		<div id="hotelimg"><img src="img/hotel.webp" /></div>
+		<div>
+			<form method="post">
+				<table border="0">
+					<tr>
+						<th>
+							<h1>富尔韦圣母院</h1><br />
+							<span>Place de Fourviere，里昂 法国</span>
+						</th>
+					</tr>
+					<tr>
+						<td>
+							<div id="g1" onclick="good1()"></div>
+							<div id="g2" onclick="good2()"></div>
+							<div id="g3" onclick="good3()"></div>
+							<div id="g4" onclick="good4()"></div>
+							<div id="g5" onclick="good5()"></div>
+							<span>点击评分(必填)</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p>点评标题:</p>
+							<input type="text" placeholder="概括您在此地的经历,分享有趣细节" id="head" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p>详细点评(不少于50字):</p>
+							<textarea cols="40" rows="6" placeholder="分享您的旅行经历,帮助其他旅行者让他们能有更好的选择,非常感谢!"></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p>您的旅行日期是？</p>
+							<input type="date" value="2023-05-22" style="border:2px solid lightgray;" />
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" />
+							<span>我保证这条酒店点评的内容是我的亲身经历及真实想法，我与此酒店不存在私人或业务关系，且没有接受过来自此产业的奖励或酬劳以撰写这条点评，我了解Tripadvisor绝不容忍虚假点评的政策。</span>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="submit" value="提交"
+								style="border: 1px solid gray; padding:8px 12px; border-radius: 12px; background-color: darkseagreen; color: aliceblue;" />
+						</td>
+					</tr>
+				</table>
+				<canvas id="myCanvas"></canvas>
+			</form>
+		</div>
+	</div>
+	<hr/>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<footer>
+		<p>Copyright © 333 版权所有</p>
+	</footer>
+	<script type="text/javascript" src="./JS/hamburger.js"></script>
+	<script>
+		var flag = true;
+		var m = 'url("img/点评2.png")';
+		let canvas = document.getElementById('myCanvas');
+		canvas.height = 200;
+		canvas.width = 200;
+		let ctx = canvas.getContext('2d');
+		var scaleX = 100;
+		var scaleSpeed = 2;
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		var img = new Image();
+		img.src = 'img/good.jpg';
+		img.onload = function () {
+			ctx.drawImage(this, 0, 0, 100, 100);
+		}
+		canvas.addEventListener('touchstart', touched, false);
+		var timer = 0;
+		function touched(event) {
+			if (timer != 0) {
+				clearInterval(timer);
+			}
+			timer = setInterval(function () {
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+				ctx.save();
+				ctx.scale(scaleX / 100, scaleX / 100);
+				ctx.drawImage(img, 0, 0, 100, 100);
+				ctx.restore();
+				scaleX = scaleX - scaleSpeed;
+				if (scaleX <= 50 || scaleX >= 100) {
+					scaleSpeed = -scaleSpeed;
+				}
+			}, 80);
+
+		}
+
+		function good1() {
+			if (flag == true) {
+				document.getElementById('g1').style.backgroundImage = "url(img/点评2.png)";
+				flag = false;
+			} else {
+				document.getElementById('g1').style.backgroundImage = "url(img/点评1.png)";
+				document.getElementById('g2').style.backgroundImage = "url(img/点评1.png)";
+				document.getElementById('g3').style.backgroundImage = "url(img/点评1.png)";
+				document.getElementById('g4').style.backgroundImage = "url(img/点评1.png)";
+				document.getElementById('g5').style.backgroundImage = "url(img/点评1.png)";
+				flag = true;
+			}
+		}
+
+		function good2() {
+			var gn = document.getElementById('g1').style.backgroundImage;
+			if (!flag && gn == m) {
+				document.getElementById('g2').style.backgroundImage = "url(img/点评2.png)";
+				flag = true;
+			} else {
+				document.getElementById('g2').style.backgroundImage = "url(img/点评1.png)";
+				document.getElementById('g3').style.backgroundImage = "url(img/点评1.png)";
+				document.getElementById('g4').style.backgroundImage = "url(img/点评1.png)";
+				document.getElementById('g5').style.backgroundImage = "url(img/点评1.png)";
+				flag = false;
+			}
+		}
+
+		function good3() {
+			var gn = document.getElementById('g2').style.backgroundImage;
+			if (flag && gn == m) {
+				document.getElementById('g3').style.backgroundImage = "url(img/点评2.png)";
+				flag = false;
+			} else {
+				document.getElementById('g3').style.backgroundImage = "url(img/点评1.png)";
+				document.getElementById('g4').style.backgroundImage = "url(img/点评1.png)";
+				document.getElementById('g5').style.backgroundImage = "url(img/点评1.png)";
+				flag = true;
+			}
+		}
+
+		function good4() {
+			var gn = document.getElementById('g3').style.backgroundImage;
+			if (!flag && gn == m) {
+				document.getElementById('g4').style.backgroundImage = "url(img/点评2.png)";
+				flag = true;
+			} else {
+				document.getElementById('g4').style.backgroundImage = "url(img/点评1.png)";
+				document.getElementById('g5').style.backgroundImage = "url(img/点评1.png)";
+				flag = false;
+			}
+		}
+
+		function good5() {
+			var gn = document.getElementById('g4').style.backgroundImage;
+			if (flag && gn == m) {
+				document.getElementById('g5').style.backgroundImage = "url(img/点评2.png)";
+				flag = false;
+			} else {
+				document.getElementById('g5').style.backgroundImage = "url(img/点评1.png)";
+				flag = true;
+			}
+		}
+	</script>
+</body>
+
+</html>

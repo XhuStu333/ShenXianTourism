@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>个人主页</title>
+  <link rel="shortcut icon" href="./img/topicon.jpg">
+  <link href="CSS/personalWeb.css" rel="stylesheet" type="text/css">
+  <link href="CSS/nav.css" rel="stylesheet" />
+</head>
+
+<body>
+  <nav>
+    <a href="javascript:void(0);" class="icon">&#9776;</a>
+    <ul class="topNav" id="topNav">
+      <li class="logo"><img src="./img/topicon.jpg" />屾仙旅游</li>
+      <li class="nav"><a href="index.html">首页</a></li>
+      <li class="nav"><a href="spot_main.html">景点</a></li>
+      <li class="nav"><a href="hotel.html">酒店</a></li>
+      <li class="nav firNav"><a href="comment.html">点评</a>
+        <ul class="secNav">
+          <li><a href="comment.html">攥写点评</a></li>
+          <li><a href="showPhoto.html">发布照片</a></li>
+        </ul>
+      </li>
+      <li class="nav perWeb"><a href="personalWeb.html" id="perLink2">个人中心</a></li>
+      <li class="photo"><a href="personalWeb.html" id="perLink"><img src="./img/momo.jpg" id="facePhoto"/></a></li>
+    </ul>
+  </nav>
+  <main>
+    <div class="section_1">
+      <a href="head.html"><img src="img/momo.jpg" id="facePhoto2"></a>
+      <div>
+        <span id="username"></span>
+        <button id="edit"><a href="#info">编辑简介</a></button>
+      </div>
+      <div>
+        <span>粉丝<br />0</span>
+        <span>已关注<br />0</span>
+      </div>
+      <ul>
+        <li><a id="messages">个人动态</a></li>
+        <li><a id="comment">点评</a></li>
+        <li><a id="myPhotos">照片墙</a></li>
+      </ul>
+
+    </div>
+
+    <div class="section_2">
+      <div id="info">
+        <h2>个人信息</h2>
+        <form style="background-color: white">
+          <table id="info_tb">
+            <tr>
+              <td>昵称</td>
+              <td><input type="text" class="info_inp" id="username1" readonly></td>
+            </tr>
+            <tr>
+              <td>性别</td>
+              <td><input type="text" class="info_inp" readonly></td>
+            </tr>
+            <tr>
+              <td>生日</td>
+              <td><input type="date" class="info_inp" readonly value="2003-03-03"></td>
+            </tr>
+            <tr>
+              <td>职业</td>
+              <td><input type="text" class="info_inp" value="学生" readonly></td>
+            </tr>
+            <tr>
+              <td>所在地</td>
+              <td><select id="sl1" onchange="show()" disabled>
+                  <option value="四川">四川</option>
+                  <option value="江苏">江苏</option>
+                  <option value="广东">广东</option>
+                </select><select id="sl2" disabled>
+                  <option value=""></option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>邮箱</td>
+              <td><input type="email" class="info_inp" readonly></td>
+            </tr>
+            <tr>
+              <td>签名</td>
+              <td><textarea class="info_inp" readonly>我是一个好学生。。。</textarea></td>
+            </tr>
+          </table>
+          <button id="submit">保存</button>
+        </form>
+      </div>
+
+      <div id="comment_page">
+        <div id="comment_show">
+          <div>
+            <span><img src="./img/1.png"></span>
+            <span>Trail</span>
+          </div>
+          <br />
+          <hr />
+          <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+          <br /><br />
+          <div>
+            <h3>一个适合去参观的地方</h3>
+            <p>
+              植物园很棒，有一个小型的免费动物园。公园就在我们去
+              艺术博物馆路上的另一侧。在这里，享受时间，闲散地散步。
+            </p>
+          </div>
+          <div style="background-color: white;">
+            <span>撰写日期：2023-1-2</span>
+            <span id="icon-love"><img src="./img/love.png" style="width:20px; height:20px"></span>
+          </div>
+        </div>
+        <div id="comment_show" style="background-color: white;">
+          <div>
+            <span><img src="./img/1.png"></span>
+            <span>Trail</span>
+          </div>
+          <br />
+          <hr />
+          <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+          <br /><br />
+          <div>
+            <h3>一个适合去参观的地方</h3>
+            <p>
+              植物园很棒，有一个小型的免费动物园。公园就在我们去
+              艺术博物馆路上的另一侧。在这里，享受时间，闲散地散步。
+            </p>
+          </div>
+          <div style="background-color: white;">
+            <span>撰写日期：2023-1-2</span>
+            <span id="icon-love"><img src="./img/love.png" style="width:20px; height:20px"></span>
+          </div>
+        </div>
+      </div>
+
+      <div id="showP">
+      </div>
+
+
+      <div>
+        <div id="intro_div">
+          <span>简介</span><br />
+          <a href="#info">+添加您所在的城市</a><br />
+          <a href="#info">+2023年4月加入</a>
+        </div>
+
+        <div id="comment_div">
+          <span>分享您的行程建议</span><br />
+          <a href="comment.html">攥写点评</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+  <footer>
+    <p>Copyright © 333 版权所有</p>
+  </footer>
+  <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+  <script type="text/javascript" src="./JS/personalWeb.js"></script>
+  <script type="text/javascript" src="./JS/hamburger.js"></script>
+  <script>
+    var face = sessionStorage.getItem("face");
+    var username = sessionStorage.getItem("username");
+    var user = document.getElementById("username");
+    var user1 = document.getElementById("username1");
+    var facePhoto2 = document.getElementById("facePhoto2");
+    if (face) {
+      facePhoto2.src = face;
+      user.innerHTML = username;
+      user1.value = username;
+    }
+    // personalComment
+  </script>
+</body>
+
+</html>

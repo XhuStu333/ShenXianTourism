@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<link rel="shortcut icon" href="./img/topicon.jpg">
+	<!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.2,minimum-scale=0.8">-->
+	<title>用户登录</title>
+	<style type="text/css">
+		body {
+			margin: 0 auto;
+			text-align: center;
+			background-image: url("img/登录页.png");
+			background-repeat: no-repeat;
+			background-size: cover;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+
+		h1 {
+			color: aliceblue;
+			font-weight: bold;
+			position: relative;
+			font-size: 56px;
+			margin-bottom: 0px;
+		}
+
+		div {
+			padding-top: 20px;
+			width: 80%;
+			margin: 0 auto;
+		}
+
+		#log {
+			font-size: 40px;
+			border-bottom: 5px solid #409eff;
+			padding-bottom: 5px;
+		}
+
+		input {
+			height: 35px;
+			width: 90%;
+			border-radius: 20px 20px 20px 20px;
+			padding-left: 10px;
+			font-size: 15px;
+		}
+
+		div:nth-child(4) {
+			height: 35px;
+			width: 75%;
+			display: flex;
+			margin: 0 auto;
+		}
+
+		div:nth-child(5) input {
+			background-color: #183A6A;
+			color: white;
+		}
+
+		#back {
+			height: 100%;
+			margin: 0 auto;
+		}
+
+		#login {
+			background-color: white;
+			width: 30%;
+			margin: 2% auto;
+			text-align: center;
+			position: relative;
+			top: 5%;
+			border-radius: 20px 20px 20px 20px;
+			box-shadow: -1px 2px 15px 15px rgba(0, 0, 0, 0.25);
+			padding-bottom: 20px;
+		}
+
+		#codejpg {
+			cursor: pointer;
+			padding-top: 0px;
+			margin-left: 10%;
+			border: 1px solid #ccc;
+		}
+
+		div:nth-child(4) input {
+			height: 35px;
+			width: 45%;
+			border-radius: 20px 20px 20px 20px;
+			margin-right: 6%;
+		}
+
+		div:nth-child(6) {
+			display: flex;
+			justify-content: space-between;
+			padding: 0 10%;
+			margin: 24px 0 auto auto;
+			font-size: 16px;
+		}
+
+		p {
+			color: white;
+			font-family: '宋体';
+			font-size: 20px;
+			margin: auto 0;
+		}
+
+		label {
+			width: 20px;
+			height: 20px;
+			position: absolute;
+			right: 15%;
+			top: 44.5%;
+		}
+
+		#login a {
+			font-size: 9px;
+			color: rgb(113, 110, 110);
+			text-decoration: none;
+		}
+	</style>
+
+</head>
+
+<body>
+	<form method="post">
+		<div id="back">
+			<h1>屾仙旅游</h1>
+			<p>念念不忘，一生向往</p>
+			<div id="login">
+				<span id="log">登录</span>
+				<div><input type="text" id="phone" placeholder="请输入手机号" /></div>
+				<div><input type="password" id="password" placeholder="请输入密码" />
+					<label onclick="eye()"><img id="imgage" src="img/noview.png" width="20px" /></label>
+				</div>
+				<div><input type="text" id="incode" placeholder="请输入验证码" /><canvas id="codejpg"
+						onclick="code(options)"></canvas></div>
+				<div><input type="button" value="登录" id="button" /></div>
+				<div><span><a href="index.html">跳过登录</a></span><span><a href="regist.html">注册账号</a></span></div>
+				<hr / style="margin: 0;">
+			</div>
+		</div>
+	</form>
+	<script>
+		eye();
+		//是否显示密码
+		function eye() {
+			let pswd = document.getElementById('password').type;
+
+			if (pswd == 'password') {
+				document.getElementById('password').type = 'text';
+				document.getElementById('imgage').src = 'img/view.png';
+			} else {
+				document.getElementById('password').type = 'password';
+				document.getElementById('imgage').src = 'img/noview.png';
+			}
+		}
+
+		//验证码需要的变量
+		var options = {
+			canvasId: 'codejpg',
+			width: 120,
+			height: 35,
+			txt: ''
+		};
+		//生产验证码内容
+		function produceCode(options) {
+			var code = "";
+			var random = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
+				'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+				'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z');
+			for (var i = 0; i < 4; i++) {
+				var index = Math.floor(Math.random() * 62);
+				code += random[index];
+			}//随机产生四个数字和字母
+			options.txt = code;
+		}
+		//产生随机数字
+		function randomNum(min, max) {
+			return Math.floor(Math.random() * (max - min) + min);//
+		}
+		//产生随机颜色
+		function randomColor(min, max) {
+			var r = randomNum(min, max);
+			var g = randomNum(min, max);
+			var b = randomNum(min, max);
+			return "rgb(" + r + "," + g + "," + b + ")";
+		}
+		//画布上画出验证码
+		function code(options) {
+			produceCode(options);
+			var canvas = document.getElementById(options.canvasId);
+			canvas.width = options.width; //画布的宽
+			canvas.height = options.height; //画布的高
+			var ctx = canvas.getContext("2d"); //创建一个canvas对象
+			ctx.textBaseline = "middle";
+			ctx.fillStyle = randomColor(100, 255);
+			ctx.fillRect(0, 0, canvas.width, canvas.height);//画与画布一样大小的矩形
+			for (var i = 0; i < options.txt.length; i++) {
+				var txt = options.txt.charAt(i);
+				ctx.font = '40px SimHei';
+				ctx.fillStyle = randomColor(60, 180); //随机生成字体颜色
+				ctx.shadowOffsetY = randomNum(-3, 3);
+				ctx.shadowBlur = randomNum(-3, 3);
+				ctx.shadowColor = "rgba(0, 0, 0, 0.3)";
+				var x = options.width / (options.txt.length + 1) * (i + 0.5);
+				var y = options.height / 2;
+				var deg = randomNum(-30, 30);
+				//设置旋转角度和坐标原点
+				ctx.translate(x, y);
+				ctx.rotate(deg * Math.PI / 180);
+				ctx.fillText(txt, 0, 0);
+				//恢复旋转角度和坐标原点
+				ctx.rotate(-deg * Math.PI / 180);
+				ctx.translate(-x, -y);
+			}
+
+			/**1~4条随机干扰线随机出现*/
+			for (var i = 0; i < randomNum(1, 4); i++) {
+				ctx.strokeStyle = randomColor(40, 180);
+				ctx.beginPath();
+				ctx.moveTo(randomNum(0, options.width), randomNum(0, options.height));
+				ctx.lineTo(randomNum(0, options.width), randomNum(0, options.height));
+				ctx.stroke();
+			}
+			/**绘制干扰点*/
+			for (var i = 0; i < options.width / 6; i++) {
+				ctx.fillStyle = randomColor(0, 255);
+				ctx.beginPath();
+				ctx.arc(randomNum(0, options.width), randomNum(0, options.height), 1, 0, 2 * Math.PI);
+				ctx.fill();
+			}
+		}
+		//刷新验证码
+		window.onload = function () {
+			code(options);
+		}
+		//登录时判断各项内容是否正确
+		document.getElementById('button').onclick = function () {
+			var xhr = new XMLHttpRequest();
+			xhr.open('POST', 'http://localhost:3000/login', true);
+			xhr.responseType = 'json';
+			xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			var pas = document.getElementById('password').value;
+			var phone = document.getElementById('phone').value;
+			var params = "password=" + pas + "&phone=" + phone;
+			console.log(params);
+			xhr.send(params);
+			var incode = document.getElementById('incode').value.toUpperCase();
+			if (incode != options.txt.toUpperCase()) {
+				alert("验证码错误请重新输入！");
+				document.getElementById('incode').value = "";
+				code(options);
+			} else {
+				xhr.onreadystatechange = function () {
+					if (this.status == 200) {
+						console.log("res", this.response);
+						if (this.response.code == 200) {
+							sessionStorage.setItem("phone", phone);
+							window.location.href = 'index.html';
+						}
+						else if (this.response == null) {
+							alert("用户或密码错误");
+						}
+						else if (this.response.code == 500) {
+							alert("手机号或密码为空");
+						}
+
+					}
+				}
+			}
+		};
+	</script>
+</body>
+
+</html>

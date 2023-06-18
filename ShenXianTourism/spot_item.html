@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./CSS/spot_item.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" type="text/css" href="./CSS/nav.css">
+  <title>景点</title>
+</head>
+
+<body>
+  <nav>
+    <a href="javascript:void(0);" class="icon">&#9776;</a>
+    <ul class="topNav" id="topNav">
+      <li class="logo"><img src="./img/logo.png" />屾仙旅游</li>
+      <li class="nav"><a href="index.html">首页</a></li>
+      <li class="nav"><a href="spot_main.html">景点</a></li>
+      <li class="nav"><a href="hotel.html">酒店</a></li>
+      <li class="nav firNav"><a href="comment.html">点评</a>
+        <ul class="secNav">
+          <li><a href="comment.html">攥写点评</a></li>
+          <li href="showPhoto.html">发布照片</li>
+        </ul>
+      </li>
+      <li class="nav perWeb"><a href="index.html" id="perLink2">个人中心</a></li>
+      <li class="photo"><a href="index.html" id="perLink"><img src="./img/momo.jpg" id="facePhoto"/></a></li>
+    </ul>
+  </nav>
+  <div id="background">
+    <header>
+      <h1></h1>
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <span>2124条评论</span>
+      </ul>
+    </header>
+
+    <main>
+      <div id="top">
+        <div>
+          <h2>来自旅行者的点评</h2>
+          <div id="comment-item">
+            <span>"枝叶"</span>
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+            <p>
+              中文互联网高质量的问答社区和创作者聚集的原创内容平台，于 2011 年 1 月
+              正式上线，以「让人们更好的分享知识、经验和见解，找到自己的解答」为品牌使命。
+            </p>
+          </div>
+
+          <div id="comment-item">
+            <span>"枝叶"</span>
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+            <p>
+              中文互联网高质量的问答社区和创作者聚集的原创内容平台，于 2011 年 1 月
+              正式上线，以「让人们更好的分享知识、经验和见解，找到自己的解答」为品牌使命。
+            </p>
+          </div>
+        </div>
+
+        <div>
+        </div>
+      </div>
+
+      <div>
+        <h2>区域</h2>
+        <div id="mapShow"></div>
+      </div>
+
+      <div>
+        <h2>分享</h2>
+        <button id="share1">撰写点评</button>
+        <button id="share2">发布照片</button>
+      </div>
+
+      <div>
+        <div>
+          <h2>点评</h2>
+          <div>
+            <div id="review">
+              <span id="icon-container">非常棒</span>
+              <div id="progress">
+                <div id="progress-done" data-done="68"></div>
+              </div>
+              <span id="percent">68%</span>
+            </div>
+            <div id="review">
+              <span id="icon-container">很行</span>
+              <div id="progress">
+                <div id="progress-done" data-done="13"></div>
+              </div>
+              <span id="percent">13%</span>
+            </div>
+            <div id="review">
+              <span id="icon-container">一般</span>
+              <div id="progress">
+                <div id="progress-done" data-done="9"></div>
+              </div>
+              <span id="percent">9%</span>
+            </div>
+            <div id="review">
+              <span id="icon-container">差</span>
+              <div id="progress">
+                <div id="progress-done" data-done="3"></div>
+              </div>
+              <span id="percent">3%</span>
+            </div>
+            <div id="review">
+              <span id="icon-container">糟糕</span>
+              <div id="progress">
+                <div id="progress-done" data-done="7"></div>
+              </div>
+              <span id="percent">7%</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="right">
+          <div id="comment">
+            <div id="comment-show">
+              <span><img src="../images/video.jpg"></span>
+              <span>用户</span>
+              <hr>
+              <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+              <div>
+                <h4>一个适合去参观的地方</h4>
+                <p>
+                  植物园很棒，有一个小型的免费动物园。公园就在我们去
+                  艺术博物馆路上的另一侧。在这里，享受时间，闲散地散步。
+                </p>
+              </div>
+              <div>
+                <span>撰写日期：2023-1-2</span>
+                <span id="icon-love"><img src="./img/love.png"></span>
+              </div>
+              <div>
+                <input type="text" id="inform" placeholder="爱评论的人运气都不差">
+                <input type="button" id="sendCid" value="发送" onclick="getDom(this)">
+              </div>
+              <div id="reply"></div>
+            </div>
+            <!--
+          <div id="comment-show">
+            <span><img src="../images/video.jpg"></span>
+            <span>用户</span>
+            <hr>
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+            <div>
+              <h3>一个适合去参观的地方</h3>
+              <p>
+                植物园很棒，有一个小型的免费动物园。公园就在我们去
+                艺术博物馆路上的另一侧。在这里，享受时间，闲散地散步。
+              </p>
+            </div>
+            <div>
+              <span>撰写日期：2023-1-2</span>
+              <span id="icon-love"><img src="../images/love.png"></span>
+            </div>
+          </div> -->
+          </div>
+        </div>
+    </main>
+
+  </div>
+  <footer>
+    <p>Copyright © 333 版权所有</p>
+  </footer>
+
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&&ak=V5QOlbqrEkSvOef7YByvZuLPQj2XHgfV">
+  </script>
+  <script type="text/javascript" src="./JS/spot_item.js"></script>
+  <script type="text/javascript" src="./JS/mapApi.js"></script>
+  <script type="text/javascript" src="./JS/hamburger.js"></script>
+</body>
+
+</html>
