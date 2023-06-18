@@ -1,6 +1,6 @@
 # ShenXianTourism
-A group of students' web homework
-An Attempt at a Student's Homework
+- A group of students' web homework
+- An Attempt at a Student's Homework
 
 ## 使用
 1. 将sql文件导入mysql数据库
